@@ -1,0 +1,75 @@
+<div class="row">
+    <div class="col s12">
+      <div class="card">
+        <div class="card-content white-text">
+          <div class="row">
+            <div class="col s5">
+              <form #SchtroumpfForm="ngForm" (ngSubmit)="onSubmit(SchtroumpfForm)">
+                <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="SchtroumpfService.selectedSchtroumpf._id">
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input type="text" name="age" #name="ngModel" [(ngModel)]="SchtroumpfService.selectedSchtroumpf.age" placeholder="Enter age" required>
+                    <label>age :
+                      <label class="red-text">*</label>
+                    </label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input type="text" name="famille" #name="ngModel" [(ngModel)]="SchtroumpfService.selectedSchtroumpf.famille" placeholder="famille">
+                    <label>famille :</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input type="text" name="race" #name="ngModel" [(ngModel)]="SchtroumpfService.selectedSchtroumpf.race" placeholder="race">
+                    <label>race :</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input type="text" name="nourriture" #name="ngModel" [(ngModel)]="SchtroumpfService.selectedSchtroumpf.nourriture" placeholder="nourriture">
+                    <label>nourriture :</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <button class="btn btn-custom right" type="button" (click)="resetForm(SchtroumpfForm)">Reset</button>
+                    <button class="btn btn-custom right" type="submit" [disabled]="!SchtroumpfForm.valid">Submit</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="col s7">
+                <table class="responsive-table highlight">
+                    <thead>
+                      <tr>
+                        <th>Age</th>
+                        <th>Famille</th>
+                        <th>Race</th>
+                        <th>Nourriture </th>
+                        <th> </th>
+                      </tr>
+                    </thead>
+                    <tr *ngFor="let emp of employeeService.employees">
+                      <td>{{emp.age}}</td>
+                      <td>{{emp.famille}}</td>
+                      <td>{{emp.race}}</td>
+                      <td>{{emp.Nourriture}}</td>
+                      <td>
+                          <a class="action-btn" (click)="onEdit(emp)">
+                            <i class="material-icons">edit</i>
+                          </a>
+                          <a class="action-btn" (click)="onDelete(emp._id,SchtroumpfForm)">
+                            <i class="material-icons">delete</i>
+                          </a>
+                        </td>
+                    </tr>
+                  </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </div>
