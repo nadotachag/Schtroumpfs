@@ -1,0 +1,49 @@
+<div class="col" style=" background-color: rgb(102, 185, 211)">
+  <table>
+    <tr>
+      <td>
+        <form #SchtroumpfForm="ngForm" (ngSubmit)="onSubmit(SchtroumpfForm)">
+          <input type="hidden" name="_id" [(ngModel)]="schtroumpf._id">
+          <div class="row">
+            <div class="input-field col s12">
+              <label>Age :
+              </label>
+              <input type="text" name="age" [(ngModel)]="schtroumpf.age" placeholder="Enter age" required>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <label>Famille :</label>
+              <input type="text" name="famille" [(ngModel)]="schtroumpf.famille" placeholder="famille">
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <label>Race :</label>
+              <input type="text" name="race" [(ngModel)]="schtroumpf.race" placeholder="race">
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <label>Nourriture :</label>
+              <input type="text" name="nourriture" [(ngModel)]="schtroumpf.nourriture" placeholder="nourriture">
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <button class="b3" type="submit">Modifier</button>
+            </div>
+          </div>
+        </form>
+      </td>
+      <td><a class="b5" (click)="logout()">
+          logout
+        </a>
+      </td>
+      <td>
+        <img src="../../assets/img/sanfour.jpg" alt="sanfour">
+      </td>
+    </tr>
+  </table>
+
+</div>

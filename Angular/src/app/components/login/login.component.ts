@@ -1,21 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoginRegesterService } from 'src/app/shared/Login_regester.service';
-
+import { Login_regester } from 'src/app/models/Login_regester';
+import { environment } from 'src/environments/environment';
+import { HttpClient } from '@angular/common/http';
 @Component({
-  selector: 'app-login',
+  selector: 'mg-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-
-  constructor(private login_regester:LoginRegesterService, private router: Router) { }
-
+  baseURL = environment;
+  constructor(private http:HttpClient,private router: Router){}
   ngOnInit(): void {
     
   }
   onLogin(form: any) {
-    this.login_regester.postauth(form.value).subscribe(res => {
+    this.postauth(form.value).subscribe(res => {
       if (res){
         this.router.navigate(['/home']);
       }else{
@@ -25,17 +25,10 @@ export class LoginComponent implements OnInit {
       console.log(err);
     });
   }
-  onRegester(form: any) {
-    this.login_regester.postregester(form.value).subscribe(res => {
-      if (res){
-        alert("Schtroumpf est bien enregestrer");
-      }else{
-        alert("Schtroumpf est ne pas enregestrer");
-        
-      }
-    }, err => {
-      console.log(err);
-    });
+  
+  postauth(emp:any) {
+    return this.http.post('http://localhost:3001/Admin/auth', emp);
   }
+ 
 
 }

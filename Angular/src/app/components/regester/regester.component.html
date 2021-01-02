@@ -1,16 +1,14 @@
-
-
-<div id="container" >
+<div id="container">
     <div  style="text-align: center;">
     </div>
     <div class="row">
       <div class="col-xs-12">
-        <form #frmLogin="ngForm" (ngSubmit)="onLogin(frmLogin)" style="text-align: center;">
-          <h2 style="text-align: center;">Connexion Schtroumpf</h2>
+        <form #frmregester="ngForm" (ngSubmit)="onRegester(frmregester)" style="text-align: center;">
+          <h2 style="text-align: center;">Inscrition</h2>
           <input type="text" required name="username" ngModel   placeholder="Username"/>
           <input type="password" name="password" placeholder="Password" ngModel required>
-          <input type="submit" value="Connexion" id='submit'>
-          <a [routerLink]="'/regester'">Inscription</a>
+          <input type="submit" value="S'inscrire" id='submit'>
+          <a [routerLink]="'/'">connexion</a>
         </form>
       </div>
     </div>

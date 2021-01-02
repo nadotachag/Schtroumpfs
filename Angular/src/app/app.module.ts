@@ -1,41 +1,41 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { RouterModule, Routes } from '@angular/router';
-import { AppComponent } from './app.component';
-import { SchtroumpfService } from './shared/Schtroumpf.service';
-import { LoginRegesterService } from './shared/Login_regester.service';
-import { HomeComponent } from './components/home/home.component';
-import { LoginComponent } from './components/login/login.component';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
- const appRouteList: Routes = [
-  {
-    path: '',
-    component: LoginComponent
-  },
-  {
-    path: '/home',
-    component: HomeComponent
-  }
-];
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
+import {HomeComponent} from './components/home/home.component';
+import {LoginComponent} from './components/login/login.component';
+import {HttpClientModule} from "@angular/common/http";
+import {NgxSpinnerModule} from "ngx-spinner";
+import {BrowserAnimationsModule, NoopAnimationsModule} from "@angular/platform-browser/animations";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {ToastrModule} from 'ngx-toastr';
+import { RegesterComponent } from './components/regester/regester.component';
+import { ModifierComponent } from './components/modifier/modifier.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    RegesterComponent,
+    ModifierComponent,
   ],
   imports: [
     BrowserModule,
-    FormsModule,
+    BrowserAnimationsModule,
+    NoopAnimationsModule,
+    AppRoutingModule,
     HttpClientModule,
-    RouterModule.forRoot(appRouteList)
-  ],
-  exports: [
-    RouterModule
+    NgxSpinnerModule,
+    ReactiveFormsModule,
+    FormsModule,
+    ToastrModule.forRoot()
+
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

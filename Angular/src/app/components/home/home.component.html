@@ -1,75 +1,92 @@
-<div class="row">
-    <div class="col s12">
-      <div class="card">
-        <div class="card-content white-text">
-          <div class="row">
-            <div class="col s5">
-              <form #SchtroumpfForm="ngForm" (ngSubmit)="onSubmit(SchtroumpfForm)">
-                <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="SchtroumpfService.selectedSchtroumpf._id">
-                <div class="row">
-                  <div class="input-field col s12">
-                    <input type="text" name="age" #name="ngModel" [(ngModel)]="SchtroumpfService.selectedSchtroumpf.age" placeholder="Enter age" required>
-                    <label>age :
-                      <label class="red-text">*</label>
-                    </label>
-                  </div>
+<div class="div" style=" background-color: rgb(102, 185, 211)">
+  <div class="col">
+    <div class="card">
+      <div class="card-content white-text">
+        <div>
+          <table>
+            <tr>
+              <td>
+                <div>
+                  <form #SchtroumpfForm="ngForm" (ngSubmit)="onSubmit(SchtroumpfForm)">
+                    <input type="hidden" name="_id" [(ngModel)]="selectedSchtroumpf._id">
+                    <div class="row">
+                      <div class="input-field col s12">
+                        <label>Age :
+                        </label>
+                        <input type="text" name="age" ngModel placeholder="age" required>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="input-field col s12">
+                        <label>Aamille :</label>
+                        <input type="text" name="famille" ngModel placeholder="famille">
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="input-field col s12">
+                        <label>Race :</label>
+                        <input type="text" name="race" ngModel placeholder="race">
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="input-field col s12">
+                        <label>Nourriture :</label>
+                        <input type="text" name="nourriture" ngModel placeholder="nourriture">
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="input-field col s12">
+                        <button class="b2 " type="button" (click)="resetForm(SchtroumpfForm)">Reset</button>
+                        <button class="b1" type="submit">submit</button>
+                      </div>
+                    </div>
+                  </form>
                 </div>
-                <div class="row">
-                  <div class="input-field col s12">
-                    <input type="text" name="famille" #name="ngModel" [(ngModel)]="SchtroumpfService.selectedSchtroumpf.famille" placeholder="famille">
-                    <label>famille :</label>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="input-field col s12">
-                    <input type="text" name="race" #name="ngModel" [(ngModel)]="SchtroumpfService.selectedSchtroumpf.race" placeholder="race">
-                    <label>race :</label>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="input-field col s12">
-                    <input type="text" name="nourriture" #name="ngModel" [(ngModel)]="SchtroumpfService.selectedSchtroumpf.nourriture" placeholder="nourriture">
-                    <label>nourriture :</label>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="input-field col s12">
-                    <button class="btn btn-custom right" type="button" (click)="resetForm(SchtroumpfForm)">Reset</button>
-                    <button class="btn btn-custom right" type="submit" [disabled]="!SchtroumpfForm.valid">Submit</button>
-                  </div>
-                </div>
-              </form>
-            </div>
-            <div class="col s7">
-                <table class="responsive-table highlight">
+              </td>
+              <td style="margin-left: 50px;">
+                <div>
+                  <table class="tablee" style="background-color: white;text-align: center;">
                     <thead>
-                      <tr>
-                        <th>Age</th>
-                        <th>Famille</th>
-                        <th>Race</th>
-                        <th>Nourriture </th>
-                        <th> </th>
+                      <tr class="tr">
+                        <th class="td">Age</th>
+                        <th class="td">Famille</th>
+                        <th class="td">Race</th>
+                        <th class="td">Nourriture </th>
+                        <th class="td">Operations</th>
                       </tr>
                     </thead>
-                    <tr *ngFor="let emp of employeeService.employees">
-                      <td>{{emp.age}}</td>
-                      <td>{{emp.famille}}</td>
-                      <td>{{emp.race}}</td>
-                      <td>{{emp.Nourriture}}</td>
-                      <td>
-                          <a class="action-btn" (click)="onEdit(emp)">
-                            <i class="material-icons">edit</i>
-                          </a>
-                          <a class="action-btn" (click)="onDelete(emp._id,SchtroumpfForm)">
-                            <i class="material-icons">delete</i>
-                          </a>
-                        </td>
+                    <tr *ngFor="let emp of schtroumpf" class="tr">
+                      <td class="td">{{emp.age}}</td>
+                      <td class="td">{{emp.famille}}</td>
+                      <td class="td">{{emp.race}}</td>
+                      <td class="td">{{emp.nourriture}}</td>
+                      <td class="td">
+                        <a class="b3" style="margin: 20px;" routerLink="/update/{{emp._id}}">
+                          Edit
+                        </a>
+                        <a class="b4" (click)="onDelete(emp._id,SchtroumpfForm)">
+                          Delete
+                        </a>
+                      </td>
                     </tr>
                   </table>
-            </div>
-          </div>
+                </div>
+              </td>
+              <td>
+                <a class="b5" (click)="logout()">
+                  logout
+                </a>
+              </td>
+              <td>
+                <img src="../../assets/img/sanfour.jpg" alt="sanfour">
+              </td>
+            </tr>
+          </table>
+
+
         </div>
       </div>
     </div>
-  
   </div>
+
+</div>
